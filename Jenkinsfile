@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_REPO   = ""
+        GIT_REPO   = "https://github.com/mehar-pa-45/ats-advanced-ats.git"
         GIT_BRANCH = "main"
 
         DOCKERHUB_USER = "mehardocker45"
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-               
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github-Cred', url: 'https://github.com/mehar-pa-45/ats-advanced-ats.git']])
             }
         }
 
