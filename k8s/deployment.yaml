@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ats-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ats-resume
+  template:
+    metadata:
+      labels:
+        app: ats-resume
+    spec:
+      containers:
+      - name: ats-resume
+        image: your-dockerhub-username/ats-advanced:latest
+        ports:
+        - containerPort: 8080
