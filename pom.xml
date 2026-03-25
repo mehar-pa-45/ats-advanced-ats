@@ -4,6 +4,7 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.ats</groupId>
     <artifactId>ats-advanced</artifactId>
     <version>1.0.0</version>
@@ -15,31 +16,43 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Web Starter -->
+
+        <!-- Spring Boot Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
 
-        <!-- Apache POI for DOCX template handling -->
+        <!-- Tomcat provided (IMPORTANT for WAR) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Apache POI -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.5</version>
         </dependency>
+
     </dependencies>
 
     <build>
+        <finalName>ats-advanced</finalName>
+
         <plugins>
-            <!-- Compiler plugin set to Java 21 -->
+
+            <!-- Java 21 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <release>21</release>
                 </configuration>
             </plugin>
 
@@ -47,7 +60,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
             </plugin>
+
         </plugins>
     </build>
+
 </project>
